@@ -5,7 +5,7 @@ provider "aws" {
 resource "aws_instance" "nginx_server" {
   ami           = "ami-085ad6ae776d8f09c"  # Amazon Linux 2 AMI (us-east-1)
   instance_type = "t2.micro"
-  key_name      = "your-key-pair-name"     # Replace with your EC2 key pair name
+  key_name      = "my-key"     # Replace with your EC2 key pair name
 
   tags = {
     Name = "nginx-server"
