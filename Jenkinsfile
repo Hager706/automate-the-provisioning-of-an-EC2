@@ -30,6 +30,8 @@ pipeline {
                 script {
                     withCredentials([sshUserPrivateKey(credentialsId: 'ssh-private-key', keyFileVariable: 'SSH_KEY_FILE')]) {
                         sh '''
+                        echo "SSH_KEY_FILE: ${SSH_KEY_FILE}"
+                        ls -l ${SSH_KEY_FILE}
                         chmod 600 ${SSH_KEY_FILE}
                         ansible-playbook -i "${env.PUBLIC_IP}," -u ec2-user --private-key ${SSH_KEY_FILE} nginx.yml
                         '''
